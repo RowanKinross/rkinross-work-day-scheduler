@@ -6,7 +6,7 @@ Development for this project is on pause, for now.
 ## Description
 A challenge for myself to build a simple event scheduler by using the skills I have learned in jQuery and Day.js where possible. The page showcases a range of skills I have acquired so far, including retrieving todays date, targetting html elements and local storage getting and setting. It makes use of embedded arrays for data retrieval and manipulation. The design of the page is very basic, but functionality has been prioritised in order to start with a good base app in which a variety of styles can be played around with. The page allows for users to input events into their schedule and upon saving them, they are stored even when the browser has been refreshed. On top of jQuery and Day.js, the application also demonstrates an understanding of CSS, html, bootstrap and vanilla javaScript. 
 
-<!-- https://rowankinross.github.io/web-APIs-code-quiz/index.html -->
+https://rowankinross.github.io/rkinross-work-day-scheduler/
 
 ## Visuals
 The following animation shows the appearance, usage and user interface of the application:

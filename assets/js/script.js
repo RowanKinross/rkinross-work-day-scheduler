@@ -39,11 +39,11 @@ $('#currentDay').text(dayjs().format('dddd, MMMM D')); //format e.g Saturday, Ja
 for (let i=0; i<hoursArray.length; i++) { //for loop to remove the relevant css classes
   hourArr = hoursArray[i];
   if (hourArr[1]<timeNow){
-    hourArr[0].children('input').addClass('past');
+    hourArr[0].children('input').addClass('past').css("font-weight", "bold");
   } else if (hourArr[1] == timeNow){
-    hourArr[0].children('input').addClass('present');
+    hourArr[0].children('input').addClass('present').css("font-weight", "bold");
   } else {
-    hourArr[0].children('input').addClass('future')
+    hourArr[0].children('input').addClass('future').css("font-weight", "bold");
   }
 
 //Persist events between refreshes of a page
@@ -86,7 +86,8 @@ $( ".btn" ).on( "click", function(e) { // if a button is clicked
 
   // clear all schedule items button
   const clearButton = $('<button class="clearButton rounded m-3 px-5 py-2 " type="button">Clear Entire Schedule</button>');
-  
+  clearButton.css({"border":"2px solid red","width":"99%","color":"white"});
+
   $('ol').append(clearButton) // add button to ol
 
   $(clearButton).on('click', function(e){
