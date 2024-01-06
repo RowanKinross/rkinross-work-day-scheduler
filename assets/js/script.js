@@ -1,4 +1,25 @@
 // Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+const hourNine = $('.hourNine');
+const hourTen = $('.hourTen');
+const hourEleven = $('.hourEleven');
+const hourTwelve = $('.hourTwelve');
+const hourThirteen = $('.hourThirteen');
+const hourFourteen = $('.hourFourteen');
+const hourFifteen = $('.hourFifteen');
+const hourSixteen = $('.hourSixteen');
+const hourSeventeen = $('.hourSeventeen');
+
+hoursArray = [
+  [hourNine, `09`],
+  [hourTen, `10`],
+  [hourEleven, `11`],
+  [hourTwelve, `12`],
+  [hourThirteen, `13`],
+  [hourFourteen, `14`],
+  [hourFifteen, `15`],
+  [hourSixteen, `16`],
+  [hourSeventeen, `17`]
+]
 
 //The current day at the top of the calender when a user opens the planner.
 $('#currentDay').text(dayjs().format('dddd, MMMM D'));
@@ -6,10 +27,21 @@ $('#currentDay').text(dayjs().format('dddd, MMMM D'));
 
 //Color-coded each time block based on past, present, and future when the time block is viewed.
 const timeNow = dayjs().format('H');
-const timeBlocks = ($('.hour').text().split(':00'));
 
-console.log(timeNow);
-console.log(timeBlocks);
+for (let i=0; i<hoursArray.length; i++) {
+  hourArr = hoursArray[i];
+  if (hourArr[1]<timeNow){
+    hourArr[0].removeClass('future present');
+  } else if (hourArr[1]=== timeNow){
+    hourArr[0].removeClass('future');
+  } else {
+  }
+}
+
+
+
+
+
 
 
 //4. Allow a user to enter an event when they click a time block
