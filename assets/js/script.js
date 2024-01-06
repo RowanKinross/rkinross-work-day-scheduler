@@ -47,17 +47,18 @@ for (let i=0; i<hoursArray.length; i++) { //for loop to remove the relevant css 
     hourArr[0].children('input').removeClass('future');
   } else {
   }
-}
 
 
-
-// get saved items (from local storage) when you load the page
-var savedItems = {};
+  // get saved items (from local storage) when you load the page
 function getSavedItems() {
-  savedItems = Object.entries(localStorage);
-  //hourArr[0].textContent(savedItems);
+  const savedItems = JSON.parse(localStorage.getItem(hourArr[2]));
+  if (savedItems != null) {
+    hourArr[0].children('input').removeAttr('placeholder');
+    hourArr[0].children('input').attr("value", savedItems);
+  } 
 }
 getSavedItems()
+}
 
 
 
@@ -75,13 +76,8 @@ $( ".btn" ).on( "click", function(e) { // if a button is clicked
     let scheduledEvent = hourArr[0].children('input').val();
     //local storage saves key as the hour class and value as the text input
     localStorage.setItem(hourArr[2], JSON.stringify(scheduledEvent)); 
-
-    //hourArr[2] input to local storage
   }}
   })
-
-
-
 
 
 
@@ -101,14 +97,14 @@ $( ".btn" ).on( "click", function(e) { // if a button is clicked
   //!time span 9am - 5pm
   //!each slot 1 hour
 
-//3. Color-code each time block based on past, present, and future when the time block is viewed.
-  // if statement 
-  // give 'past', 'present' and 'future' classes accordingly
+//!3. Color-code each time block based on past, present, and future when the time block is viewed.
+  //! if statement 
+  //! give 'past', 'present' and 'future' classes accordingly
 
-//4. Allow a user to enter an event when they click a time block
-  // click event
+//!4. Allow a user to enter an event when they click a time block
+  //! click event
 
-//5. Save the event in local storage when the save button is clicked in that time block.
+//!5. Save the event in local storage when the save button is clicked in that time block.
   // set local storage
   
 //6. Persist events between refreshes of a page
