@@ -11,7 +11,7 @@ https://rowankinross.github.io/rkinross-work-day-scheduler/
 ## Visuals
 The following animation shows the appearance, usage and user interface of the application:
 
-<!-- ![quiz demo](./assets/images/web-API-code-quiz-demo.gif) -->
+![quiz demo](./assets/images/work-day-scheduler-demo.gif)
 
 ## Installation
 n/a
