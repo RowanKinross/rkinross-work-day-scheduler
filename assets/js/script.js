@@ -28,7 +28,7 @@ hoursArray = [
 ]
 
 
-const timeNow = dayjs().format('H'); //current time - juist the hour value
+const timeNow = dayjs().format('H')-8; //current time - juist the hour value
 
 
 //The current day displayed the top of the calender when a user opens the planner
@@ -42,23 +42,28 @@ $('#currentDay').text(dayjs().format('dddd, MMMM D')); //format e.g Saturday, Ja
 for (let i=0; i<hoursArray.length; i++) { //for loop to remove the relevant css classes
   hourArr = hoursArray[i];
   if (hourArr[1]<timeNow){
-    hourArr[0].children('input').removeClass('future present');
-  } else if (hourArr[1]=== timeNow){
-    hourArr[0].children('input').removeClass('future');
+    hourArr[0].children('input').addClass('past');
+  } else if (hourArr[1] == timeNow){
+    hourArr[0].children('input').addClass('present');
   } else {
+    hourArr[0].children('input').addClass('future')
   }
 
 
-  // get saved items (from local storage) when you load the page
+
+
+// Persist events between refreshes of a page
+  //get saved items (from local storage) when you load the page
 function getSavedItems() {
   const savedItems = JSON.parse(localStorage.getItem(hourArr[2]));
   if (savedItems != null && savedItems != ``) {
-    hourArr[0].children('input').removeAttr('placeholder');
+    //hourArr[0].children('input').removeAttr('placeholder');
     hourArr[0].children('input').attr("value", savedItems);
   } 
 }
 getSavedItems()
 }
+
 
 
 
@@ -78,34 +83,16 @@ $( ".btn" ).on( "click", function(e) { // if a button is clicked
     localStorage.setItem(hourArr[2], JSON.stringify(scheduledEvent)); 
   }}
   })
-
-
-
-
-//6. Persist events between refreshes of a page
-
-
-
-
-
-//!1. Display the current day at the top of the calender when a user opens the planner.
-  //!target top of the calendar
-  //! display dayjs() formatted to current day(?) day of the week, month and date e.g thursday, september 30th
-
-//!2. Present time blocks for standard business hours when the user scrolls down.
-  //!bootstrap input groups
-  //!time span 9am - 5pm
-  //!each slot 1 hour
-
-//!3. Color-code each time block based on past, present, and future when the time block is viewed.
-  //! if statement 
-  //! give 'past', 'present' and 'future' classes accordingly
-
-//!4. Allow a user to enter an event when they click a time block
-  //! click event
-
-//!5. Save the event in local storage when the save button is clicked in that time block.
-  // set local storage
   
-//6. Persist events between refreshes of a page
-  // get local storage at beginning of page
+
+
+  // clear all schedule items button
+  const clearButton = $('<button class="clearButton rounded m-3 px-5 py-2 " type="button">Clear Entire Schedule</button>');
+  
+  $('ol').append(clearButton)
+
+  $(clearButton).on('click', function(e){
+    e.preventDefault();
+    localStorage.clear();
+    location.reload();
+  })

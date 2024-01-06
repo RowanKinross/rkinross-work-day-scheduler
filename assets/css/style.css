@@ -1,18 +1,13 @@
+/*targetting everything in the body of the html*/
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
 }
 
-textarea {
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
-}
 
+
+/* Title w/ description and current date */
 header {
   text-align: center;
   background-color: transparent;
@@ -22,52 +17,62 @@ header {
   padding: 60px;
 }
 
-.description {
-  white-space: pre-wrap;
-}
 
-.time-block {
+
+
+/* All styles affecting the interactive planner (ol in html)*/
+.time-block { 
   text-align: center;
   border-radius: 15px;
   height: 80px;
 }
 
-.row {
-  white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;
-}
-
-.hour {
+.hour { /* time-block hour e.g '09:00' */
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
 }
-
-.past {
+.past { /* grey for events which have passed */
   background-color: #d3d3d3;
   color: white;
+  font-weight: bold;
 }
-
-.present {
+.present { /* red for events at the current time */
   background-color: #ff6961;
   color: white;
+  font-weight: bold;
 }
-
-.future {
+.future { /* green for events planned in the future */
   background-color: #77dd77;
   color: white;
+  font-weight: bold;
 }
-
-.saveBtn {
+.form-control::placeholder { /*placeholder styling to make it more distinguishable*/
+  opacity: 0.2;
+  font-style: italic;
+  font-size: small;
+}
+.saveBtn { /* blue save button for saving to local storage */
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
 }
-
-.saveBtn i:hover {
+.saveBtn:hover { /* hover effects over the save buttons */
   font-size: 20px;
   transition: all 0.3s ease-in-out;
+}
+
+
+
+/* appended clear button for clearing the locally stored scheduled events */
+.clearButton {
+  width: 99%;
+  background-color: #ff6961;
+  color: white;
+  border: 2px solid red;
+}
+.clearButton:hover { /* hover distinguished to alert user before clicking */
+  background-color: red;
 }
