@@ -10,8 +10,10 @@ https://rowankinross.github.io/rkinross-work-day-scheduler/
 
 ## Visuals
 The following animation shows the appearance, usage and user interface of the application:
+![scheduler demo](./assets/images/work-day-scheduler-demo.gif)
 
-![quiz demo](./assets/images/work-day-scheduler-demo.gif)
+The following image shows the appearance of the application at a different time of day (11am):
+![scheduler screencapture](./assets/images/work-day-scheduler-screen-capture.png)
 
 ## Installation
 n/a
