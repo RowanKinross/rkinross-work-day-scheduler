@@ -26,7 +26,6 @@ header {
   border-radius: 15px;
   height: 80px;
 }
-
 .hour { /* time-block hour e.g '09:00' */
   background-color: #ffffff;
   color: #000000;
@@ -63,6 +62,8 @@ header {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+
 
 
 
