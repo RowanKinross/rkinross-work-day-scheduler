@@ -1,4 +1,9 @@
 // Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+
+
+
+
+//variables for where to find the time-block <input> elements
 const hourNine = $('.hourNine');
 const hourTen = $('.hourTen');
 const hourEleven = $('.hourEleven');
@@ -9,42 +14,69 @@ const hourFifteen = $('.hourFifteen');
 const hourSixteen = $('.hourSixteen');
 const hourSeventeen = $('.hourSeventeen');
 
+//array to connect time-block <input> elements with their hour number value
 hoursArray = [
-  [hourNine, `09`],
-  [hourTen, `10`],
-  [hourEleven, `11`],
-  [hourTwelve, `12`],
-  [hourThirteen, `13`],
-  [hourFourteen, `14`],
-  [hourFifteen, `15`],
-  [hourSixteen, `16`],
-  [hourSeventeen, `17`]
+  [hourNine, '09', 'hourNine'],
+  [hourTen, '10', 'hourTen'],
+  [hourEleven, '11', 'hourEleven'],
+  [hourTwelve, '12', 'hourTwelve'],
+  [hourThirteen, '13', 'hourThireen'],
+  [hourFourteen, '14', 'hourFourteen'],
+  [hourFifteen, '15', 'hourFifteen'],
+  [hourSixteen, '16', 'hourSixteen'],
+  [hourSeventeen, '17', 'hourSeventeen']
 ]
 
-//The current day at the top of the calender when a user opens the planner.
-$('#currentDay').text(dayjs().format('dddd, MMMM D'));
+
+const timeNow = dayjs().format('H'); //current time - juist the hour value
 
 
-//Color-coded each time block based on past, present, and future when the time block is viewed.
-const timeNow = dayjs().format('H');
+//The current day displayed the top of the calender when a user opens the planner
+$('#currentDay').text(dayjs().format('dddd, MMMM D')); //format e.g Saturday, January 6
 
-for (let i=0; i<hoursArray.length; i++) {
+
+
+
+
+//Color-coded time blocks based on their position (past, present, and future) when compared to the current time 
+
+for (let i=0; i<hoursArray.length; i++) { //for loop to remove the relevant css classes
   hourArr = hoursArray[i];
   if (hourArr[1]<timeNow){
-    hourArr[0].removeClass('future present');
+    hourArr[0].children('input').removeClass('future present');
   } else if (hourArr[1]=== timeNow){
-    hourArr[0].removeClass('future');
+    hourArr[0].children('input').removeClass('future');
   } else {
   }
+
+
+
+
+ 
+  // hourArr[0].children('button').click(function(){
+  //   console.log(`button ${hourArr[1]} was clicked`);
+  // });
 }
 
 
+$( ".btn" ).on( "click", function(e) { // if a button is clicked
+  e.preventDefault();
+  const buttonClickedClasses = e.target.parentNode.classList.value.split(' '); //
+  buttonClickedHourClass = buttonClickedClasses[1];
 
+  for (let i=0; i<hoursArray.length; i++) { //for loop to remove the relevant css classes
+    hourArr = hoursArray[i];
+  if (hourArr[2] === buttonClickedHourClass) {
+
+    //hourArr[0] input to local storage
+  }}
+  })
 
 
 
 
 //4. Allow a user to enter an event when they click a time block
+
 
 //5. Save the event in local storage when the save button is clicked in that time block.
 
@@ -65,7 +97,7 @@ for (let i=0; i<hoursArray.length; i++) {
 
 //3. Color-code each time block based on past, present, and future when the time block is viewed.
   // if statement 
-  // give `past`, `present` and `future` classes accordingly
+  // give 'past', 'present' and 'future' classes accordingly
 
 //4. Allow a user to enter an event when they click a time block
   // click event
