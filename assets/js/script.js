@@ -20,7 +20,7 @@ hoursArray = [
   [hourTen, '10', 'hourTen'],
   [hourEleven, '11', 'hourEleven'],
   [hourTwelve, '12', 'hourTwelve'],
-  [hourThirteen, '13', 'hourThireen'],
+  [hourThirteen, '13', 'hourThirteen'],
   [hourFourteen, '14', 'hourFourteen'],
   [hourFifteen, '15', 'hourFifteen'],
   [hourSixteen, '16', 'hourSixteen'],
@@ -39,7 +39,6 @@ $('#currentDay').text(dayjs().format('dddd, MMMM D')); //format e.g Saturday, Ja
 
 
 //Color-coded time blocks based on their position (past, present, and future) when compared to the current time 
-
 for (let i=0; i<hoursArray.length; i++) { //for loop to remove the relevant css classes
   hourArr = hoursArray[i];
   if (hourArr[1]<timeNow){
@@ -48,17 +47,23 @@ for (let i=0; i<hoursArray.length; i++) { //for loop to remove the relevant css 
     hourArr[0].children('input').removeClass('future');
   } else {
   }
-
-
-
-
- 
-  // hourArr[0].children('button').click(function(){
-  //   console.log(`button ${hourArr[1]} was clicked`);
-  // });
 }
 
 
+
+// get saved items (from local storage) when you load the page
+var savedItems = {};
+function getSavedItems() {
+  savedItems = Object.entries(localStorage);
+  //hourArr[0].textContent(savedItems);
+}
+getSavedItems()
+
+
+
+
+//4. Allow a user to enter an event when they click a time block
+//5. Save the event in local storage when the save button is clicked in that time block.
 $( ".btn" ).on( "click", function(e) { // if a button is clicked
   e.preventDefault();
   const buttonClickedClasses = e.target.parentNode.classList.value.split(' '); //
@@ -66,19 +71,20 @@ $( ".btn" ).on( "click", function(e) { // if a button is clicked
 
   for (let i=0; i<hoursArray.length; i++) { //for loop to remove the relevant css classes
     hourArr = hoursArray[i];
-  if (hourArr[2] === buttonClickedHourClass) {
+    if (hourArr[2] === buttonClickedHourClass) {
+    let scheduledEvent = hourArr[0].children('input').val();
+    //local storage saves key as the hour class and value as the text input
+    localStorage.setItem(hourArr[2], JSON.stringify(scheduledEvent)); 
 
-    //hourArr[0] input to local storage
+    //hourArr[2] input to local storage
   }}
   })
 
 
 
 
-//4. Allow a user to enter an event when they click a time block
 
 
-//5. Save the event in local storage when the save button is clicked in that time block.
 
 //6. Persist events between refreshes of a page
 
