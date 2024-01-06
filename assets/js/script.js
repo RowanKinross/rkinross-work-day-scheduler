@@ -52,7 +52,7 @@ for (let i=0; i<hoursArray.length; i++) { //for loop to remove the relevant css 
   // get saved items (from local storage) when you load the page
 function getSavedItems() {
   const savedItems = JSON.parse(localStorage.getItem(hourArr[2]));
-  if (savedItems != null) {
+  if (savedItems != null && savedItems != ``) {
     hourArr[0].children('input').removeAttr('placeholder');
     hourArr[0].children('input').attr("value", savedItems);
   } 
