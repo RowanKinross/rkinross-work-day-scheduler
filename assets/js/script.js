@@ -28,8 +28,13 @@ const timeNow = dayjs().format('H'); //current time - just the hour value
 
 
 
+
+dayjs.extend(window.dayjs_plugin_utc);
+dayjs.extend(window.dayjs_plugin_advancedFormat);
+
+
 //The current day is displayed the top of the calender when a user opens the planner
-$('#currentDay').text(dayjs().format('dddd, MMMM D')); //format e.g Saturday, January 6
+$('#currentDay').text(dayjs().format('dddd, MMMM Do')); //format e.g Saturday, January 6
 
 
 
